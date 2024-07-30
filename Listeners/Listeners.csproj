@@ -1,0 +1,463 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{91AEEA62-50B9-46FC-A7B9-D24F9D9F5F4F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Listeners</RootNamespace>
+    <AssemblyName>Listeners</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>writing-on-an-open-book_icon-icons.com_70325.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.9.0.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
+      <HintPath>packages\Portable.BouncyCastle.1.9.0\lib\net40\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="Dapper, Version=1.60.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Dapper.1.60.6\lib\net451\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Protobuf, Version=3.19.4.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>packages\Google.Protobuf.3.19.4\lib\net45\Google.Protobuf.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Compression.LZ4, Version=1.2.6.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
+      <HintPath>packages\K4os.Compression.LZ4.1.2.6\lib\net45\K4os.Compression.LZ4.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Compression.LZ4.Streams, Version=1.2.6.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
+      <HintPath>packages\K4os.Compression.LZ4.Streams.1.2.6\lib\net45\K4os.Compression.LZ4.Streams.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Hash.xxHash, Version=1.0.6.0, Culture=neutral, PublicKeyToken=32cd54395057cec3, processorArchitecture=MSIL">
+      <HintPath>packages\K4os.Hash.xxHash.1.0.6\lib\net45\K4os.Hash.xxHash.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Office.Interop.Excel.15.0.4795.1001\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Office.Interop.Word.15.0.4797.1004\lib\net20\Microsoft.Office.Interop.Word.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="MySql.Data, Version=8.0.31.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>packages\MySql.Data.8.0.31\lib\net452\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySqlBackup, Version=2.3.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\MySqlBackup.NET.2.3.6\lib\net452\MySqlBackup.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="QRCoder, Version=1.5.1.0, Culture=neutral, PublicKeyToken=c4ed5b9ae8358a28, processorArchitecture=MSIL">
+      <HintPath>packages\QRCoder.1.5.1\lib\net40\QRCoder.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Buffers.4.5.1\lib\netstandard1.1\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Memory.4.5.4\lib\netstandard1.1\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="ZstdNet, Version=1.4.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>packages\MySql.Data.8.0.31\lib\net452\ZstdNet.dll</HintPath>
+    </Reference>
+    <Reference Include="zxing, Version=0.16.9.0, Culture=neutral, PublicKeyToken=4e88037ac681fe60, processorArchitecture=MSIL">
+      <HintPath>packages\ZXing.Net.0.16.9\lib\net45\zxing.dll</HintPath>
+    </Reference>
+    <Reference Include="zxing.presentation, Version=0.16.9.0, Culture=neutral, PublicKeyToken=4e88037ac681fe60, processorArchitecture=MSIL">
+      <HintPath>packages\ZXing.Net.0.16.9\lib\net45\zxing.presentation.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Constants.cs" />
+    <Compile Include="Csv\CsvHelper.cs" />
+    <Compile Include="Dtos\UserDto.cs" />
+    <Compile Include="Dtos\ListenerDto.cs" />
+    <Compile Include="Enums\Error.cs" />
+    <Compile Include="Enums\Message.cs" />
+    <Compile Include="Enums\Pagination.cs" />
+    <Compile Include="Dictionaries\Errors.cs" />
+    <Compile Include="ExcelHelper\ExcelClient.cs" />
+    <Compile Include="FormCloserHelper\FormCloser.cs" />
+    <Compile Include="Forms\Authorization\AuthorizationController.cs" />
+    <Compile Include="Forms\Authorization\AuthorizationService.cs" />
+    <Compile Include="Forms\Authorization\AuthorizationView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Authorization\AuthorizationView.Designer.cs">
+      <DependentUpon>AuthorizationView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseHelper\MySqlClient.cs" />
+    <Compile Include="Forms\Roles\Manager\MainMenu\ManagerMenuController.cs" />
+    <Compile Include="Forms\Roles\Manager\Report.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Roles\Manager\Report.Designer.cs">
+      <DependentUpon>Report.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Roles\Secretary\AboutOrganization\AboutOrganizationView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Roles\Secretary\AboutOrganization\AboutOrganizationView.Designer.cs">
+      <DependentUpon>AboutOrganizationView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Roles\Secretary\Course\CourseChangerView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Roles\Secretary\Course\CourseChangerView.Designer.cs">
+      <DependentUpon>CourseChangerView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Roles\Secretary\Course\CourseRecording\CourseRecordingView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Roles\Secretary\Course\CourseRecording\CourseRecordingView.Designer.cs">
+      <DependentUpon>CourseRecordingView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Roles\Secretary\Course\CourseView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Roles\Secretary\Course\CourseView.Designer.cs">
+      <DependentUpon>CourseView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Roles\Secretary\Directories\Customer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Roles\Secretary\Directories\Customer.Designer.cs">
+      <DependentUpon>Customer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Roles\Secretary\Directories\Education.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Roles\Secretary\Directories\Education.Designer.cs">
+      <DependentUpon>Education.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Roles\Secretary\Directories\Employment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Roles\Secretary\Directories\Employment.Designer.cs">
+      <DependentUpon>Employment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Roles\Secretary\Directories\Qualification.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Roles\Secretary\Directories\Qualification.Designer.cs">
+      <DependentUpon>Qualification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Roles\Secretary\Directories\SelectDirectory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Roles\Secretary\Directories\SelectDirectory.Designer.cs">
+      <DependentUpon>SelectDirectory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Roles\Secretary\Group\GroupChangerView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Roles\Secretary\Group\GroupChangerView.Designer.cs">
+      <DependentUpon>GroupChangerView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Roles\Secretary\Group\GroupView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Roles\Secretary\Group\GroupView.Designer.cs">
+      <DependentUpon>GroupView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Roles\Secretary\Listener\ListenerController.cs" />
+    <Compile Include="Forms\Roles\Secretary\Listener\ListenerCreater\ListenerCreaterController.cs" />
+    <Compile Include="Forms\Roles\Secretary\Listener\ListenerCreater\ListenerCreaterView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Roles\Secretary\Listener\ListenerCreater\ListenerCreaterView.Designer.cs">
+      <DependentUpon>ListenerCreaterView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Roles\Secretary\Listener\ListenerCreater\ListenerCreaterService.cs" />
+    <Compile Include="Forms\Roles\Secretary\Listener\ListenerService.cs" />
+    <Compile Include="Forms\Roles\Secretary\Listener\ListenerUpdater\ListenerUpdaterController.cs" />
+    <Compile Include="Forms\Roles\Secretary\Listener\ListenerUpdater\ListenerUpdaterService.cs" />
+    <Compile Include="Forms\Roles\Secretary\Listener\ListenerUpdater\ListenerUpdaterView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Roles\Secretary\Listener\ListenerUpdater\ListenerUpdaterView.Designer.cs">
+      <DependentUpon>ListenerUpdaterView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Roles\Secretary\Listener\ListenerView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Roles\Secretary\Listener\ListenerView.Designer.cs">
+      <DependentUpon>ListenerView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Roles\Secretary\MainMenu\SecretaryMenuController.cs" />
+    <Compile Include="Forms\Roles\Secretary\Organization\OrganizationChangerView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Roles\Secretary\Organization\OrganizationChangerView.Designer.cs">
+      <DependentUpon>OrganizationChangerView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Roles\Secretary\Organization\OrganizationView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Roles\Secretary\Organization\OrganizationView.Designer.cs">
+      <DependentUpon>OrganizationView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Roles\Secretary\Record\RecordChangerView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Roles\Secretary\Record\RecordChangerView.Designer.cs">
+      <DependentUpon>RecordChangerView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Roles\Secretary\Record\RecordView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Roles\Secretary\Record\RecordView.Designer.cs">
+      <DependentUpon>RecordView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Roles\Secretary\Representative\RepresentativeChangerView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Roles\Secretary\Representative\RepresentativeChangerView.Designer.cs">
+      <DependentUpon>RepresentativeChangerView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Roles\Secretary\Representative\RepresentativeView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Roles\Secretary\Representative\RepresentativeView.Designer.cs">
+      <DependentUpon>RepresentativeView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Roles\SysAdmin\Employee\EmployeeChangerView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Roles\SysAdmin\Employee\EmployeeChangerView.Designer.cs">
+      <DependentUpon>EmployeeChangerView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Roles\SysAdmin\Employee\EmployeeView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Roles\SysAdmin\Employee\EmployeeView.Designer.cs">
+      <DependentUpon>EmployeeView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Roles\SysAdmin\MainMenu\SysAdminMenuController.cs" />
+    <Compile Include="Forms\Roles\SysAdmin\User\UserChangerView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Roles\SysAdmin\User\UserChangerView.Designer.cs">
+      <DependentUpon>UserChangerView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Roles\SysAdmin\User\UserView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Roles\SysAdmin\User\UserView.Designer.cs">
+      <DependentUpon>UserView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GlobalData.cs" />
+    <Compile Include="Hash\HashHelper.cs" />
+    <Compile Include="Interfaces\Authorization\AuthorizationRequest.cs" />
+    <Compile Include="Interfaces\Authorization\AuthorizationResponse.cs" />
+    <Compile Include="Interfaces\ICourse.cs" />
+    <Compile Include="Interfaces\IDocument.cs" />
+    <Compile Include="Interfaces\IEmployee.cs" />
+    <Compile Include="Forms\Roles\Manager\MainMenu\ManagerMenuView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Roles\Manager\MainMenu\ManagerMenuView.Designer.cs">
+      <DependentUpon>ManagerMenuView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Roles\Secretary\MainMenu\SecretaryMenuView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Roles\Secretary\MainMenu\SecretaryMenuView.Designer.cs">
+      <DependentUpon>SecretaryMenuView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Roles\SysAdmin\MainMenu\SysAdminMenuView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Roles\SysAdmin\MainMenu\SysAdminMenuView.Designer.cs">
+      <DependentUpon>SysAdminMenuView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\IFirstPattern.cs" />
+    <Compile Include="Interfaces\IGroup.cs" />
+    <Compile Include="Interfaces\IListener.cs" />
+    <Compile Include="Interfaces\IOrganization.cs" />
+    <Compile Include="Interfaces\IPayment.cs" />
+    <Compile Include="Interfaces\IReceiptReport.cs" />
+    <Compile Include="Interfaces\IRecord.cs" />
+    <Compile Include="Interfaces\IRecordReceipt.cs" />
+    <Compile Include="Interfaces\IRepresentative.cs" />
+    <Compile Include="Interfaces\ListenerRecord.cs" />
+    <Compile Include="Interfaces\Listener\ListenerRequest.cs" />
+    <Compile Include="Interfaces\Listener\ListenerResponse.cs" />
+    <Compile Include="Interfaces\IPassport.cs" />
+    <Compile Include="Lists\Roles.cs" />
+    <Compile Include="Messages\PositiveMessages.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Interfaces\IUser.cs" />
+    <Compile Include="WordHelper\WordClient.cs" />
+    <EmbeddedResource Include="Forms\Authorization\AuthorizationView.resx">
+      <DependentUpon>AuthorizationView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Roles\Manager\MainMenu\ManagerMenuView.resx">
+      <DependentUpon>ManagerMenuView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Roles\Manager\Report.resx">
+      <DependentUpon>Report.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Roles\Secretary\AboutOrganization\AboutOrganizationView.resx">
+      <DependentUpon>AboutOrganizationView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Roles\Secretary\Course\CourseChangerView.resx">
+      <DependentUpon>CourseChangerView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Roles\Secretary\Course\CourseRecording\CourseRecordingView.resx">
+      <DependentUpon>CourseRecordingView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Roles\Secretary\Course\CourseView.resx">
+      <DependentUpon>CourseView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Roles\Secretary\Directories\Customer.resx">
+      <DependentUpon>Customer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Roles\Secretary\Directories\Education.resx">
+      <DependentUpon>Education.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Roles\Secretary\Directories\Employment.resx">
+      <DependentUpon>Employment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Roles\Secretary\Directories\Qualification.resx">
+      <DependentUpon>Qualification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Roles\Secretary\Directories\SelectDirectory.resx">
+      <DependentUpon>SelectDirectory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Roles\Secretary\Group\GroupChangerView.resx">
+      <DependentUpon>GroupChangerView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Roles\Secretary\Group\GroupView.resx">
+      <DependentUpon>GroupView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Roles\Secretary\Listener\ListenerCreater\ListenerCreaterView.resx">
+      <DependentUpon>ListenerCreaterView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Roles\Secretary\Listener\ListenerUpdater\ListenerUpdaterView.resx">
+      <DependentUpon>ListenerUpdaterView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Roles\Secretary\Listener\ListenerView.resx">
+      <DependentUpon>ListenerView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Roles\Secretary\MainMenu\SecretaryMenuView.resx">
+      <DependentUpon>SecretaryMenuView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Roles\Secretary\Organization\OrganizationChangerView.resx">
+      <DependentUpon>OrganizationChangerView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Roles\Secretary\Organization\OrganizationView.resx">
+      <DependentUpon>OrganizationView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Roles\Secretary\Record\RecordChangerView.resx">
+      <DependentUpon>RecordChangerView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Roles\Secretary\Record\RecordView.resx">
+      <DependentUpon>RecordView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Roles\Secretary\Representative\RepresentativeChangerView.resx">
+      <DependentUpon>RepresentativeChangerView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Roles\Secretary\Representative\RepresentativeView.resx">
+      <DependentUpon>RepresentativeView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Roles\SysAdmin\Employee\EmployeeChangerView.resx">
+      <DependentUpon>EmployeeChangerView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Roles\SysAdmin\Employee\EmployeeView.resx">
+      <DependentUpon>EmployeeView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Roles\SysAdmin\MainMenu\SysAdminMenuView.resx">
+      <DependentUpon>SysAdminMenuView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Roles\SysAdmin\User\UserChangerView.resx">
+      <DependentUpon>UserChangerView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Roles\SysAdmin\User\UserView.resx">
+      <DependentUpon>UserView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\update_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="writing-on-an-open-book_icon-icons.com_70325.ico" />
+    <None Include="bin\Debug\images\plug.jpg" />
+    <Content Include="logo.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
